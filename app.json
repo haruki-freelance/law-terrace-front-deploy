@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "law-terrace-front-init",
-    "slug": "law-terrace-front-init",
+    "name": "law-terrace-front",
+    "slug": "law-terrace-front",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
