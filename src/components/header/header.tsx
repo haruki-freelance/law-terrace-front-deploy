@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { styles } from "./style";
 
 /**
@@ -9,7 +9,7 @@ import { styles } from "./style";
 export const Header = () => {
     return (
         <View style={styles.container}>
-            
+            <Text>HEADER</Text>
         </View>
     );
 };
