@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { Header } from "./components/header/header";
+import { Header } from "./shared/components/header/header";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Header />
+        <Header todo={2} inProgress={14} complete={8} fullName="橋本 惇一" />
         {children}
         <ScrollRestoration />
         <Scripts />
