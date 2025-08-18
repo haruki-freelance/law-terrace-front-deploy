@@ -1,17 +1,7 @@
 @import "tailwindcss";
-
-@font-face {
-  font-family: 'DefaultFont';
-  src: url('./assets/fonts/NotoSansJP-Regular.ttf') format('truetype');
-}
+@plugin '@digital-go-jp/tailwind-theme-plugin';
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-
-  font-family: 'DefaultFont', sans-serif;
+  @apply bg-white;
 }
