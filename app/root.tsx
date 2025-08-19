@@ -36,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Header todo={2} inProgress={14} complete={8} fullName="橋本 惇一" />
-        <section className="flex flex-row justify-between bg-[#F8F8F8]">
+        <section className="flex flex-row justify-between bg-[#F8F8F8] h-full">
           {children}
           <Sidebar />
         </section>

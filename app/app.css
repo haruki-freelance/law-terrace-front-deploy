@@ -3,5 +3,5 @@
 
 html,
 body {
-  @apply bg-white;
+  @apply bg-white m-0 w-full h-full overflow-hidden;
 }
