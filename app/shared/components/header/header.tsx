@@ -1,5 +1,6 @@
 import lawTerraceIcon from "../../../assets/images/law-terrace-icon.svg";
 import account from "../../../assets/images/account.svg";
+import { StatusItem } from "../status-item/status-item";
 
  {/* 共通ヘッダー */}
 export function Header({ todo, inProgress, complete, fullName } : { todo: number, inProgress: number, complete: number, fullName: string }) {
@@ -12,21 +13,9 @@ export function Header({ todo, inProgress, complete, fullName } : { todo: number
             />
             {/* 事件の進捗状況の表示 */}
             <div className="flex items-center justify-between gap-12 text-[#666666] font-normal text-base">
-                <div className="flex items-baseline gap-1">
-                    <span>未着手</span>
-                    <span className="text-3xl text-[#00118F] font-bold">{todo}</span>
-                    <span>件</span>
-                </div>
-                <div className="flex items-baseline gap-1">
-                    <span>進行中</span>
-                    <span className="text-3xl text-[#00118F] font-bold">{inProgress}</span>
-                    <span>件</span>
-                </div>
-                <div className="flex items-baseline gap-1">
-                    <span>完了</span>
-                    <span className="text-3xl text-[#00118F] font-bold">{complete}</span>
-                    <span>件</span>
-                </div>
+                <StatusItem name='未着手' count={todo} unit='件' />
+                <StatusItem name='進行中' count={inProgress} unit='件' />
+                <StatusItem name='完了' count={complete} unit='件' />
             </div>
             {/* プロフィール表示 */}
             <div className="flex items-center justify-between gap-4">
