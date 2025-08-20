@@ -6,7 +6,7 @@ import hamburgerMenu from '../../../assets/images/hamburger-menu.svg';
  {/* 共通ヘッダー */}
 export function Header({ todo, inProgress, complete, fullName } : { todo: number, inProgress: number, complete: number, fullName: string }) {
     return (
-        <header className='flex items-center justify-between py-4.5 pr-4 pl-8'>
+        <header className='flex items-center justify-between py-4.5 pr-2 pl-3 md:pr-4 md:pl-8'>
             {/* 法テラスロゴの表示 */}
             <img className='block min-w-24.5 min-h-5 w-[18%] h-[5%] md:w-34 md:h-8'
                 src={lawTerraceIcon}

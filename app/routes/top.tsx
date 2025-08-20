@@ -13,13 +13,13 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Top() {
   return (
-    <main className='flex flex-col w-full md:w-[73%] py-8 pl-8 pr-4'>
+    <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4'>
       {/** 連絡一覧 */}
       <section>
-        <header className='flex justify-between'>
+        <header className='flex justify-between ml-2 md:ml-0'>
           <HeaderTitle title='連絡一覧' />
           <div className='flex flex-row gap-6'>
-            <Button variant='solid-fill' size='sm'>
+            <Button variant='solid-fill' size='sm' className='hidden md:block'>
               ＋新規連絡
             </Button>
             <img src={sort} alt='ソート' className='block mr-1'/>
