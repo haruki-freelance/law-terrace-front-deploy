@@ -13,7 +13,7 @@ export function ArticleItem({ title, content, updDatetime, category, isNew, isFl
                 </div>
                 <div className='flex flex-col w-[71%] pr-4 justify-center'>
                     <span className='text-lg font-bold'>{title}</span>
-                    <p className='text-base truncate'>{content}</p>
+                    <p className='text-base line-clamp-2 md:truncate'>{content}</p>
                 </div>
                 <div className='flex flex-col w-[20%] items-end justify-center'>
                     <span className='text-base'>{updDatetime}</span>
