@@ -28,7 +28,7 @@ export function Sidebar() {
                 </div>
             </section>
             {/** FAQ */}
-            <section className='mt-8 h-[45%] overflow-hidden'>
+            <section className='mt-4 h-[45%] overflow-hidden'>
                 <header className='flex justify-between'>
                     <HeaderTitle title='FAQ' />
                     <img src={sort} alt='ソート'/>
