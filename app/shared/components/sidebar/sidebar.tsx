@@ -1,7 +1,7 @@
 import { HeaderTitle } from '../header-title/header-title';
 import sort from '../../../assets/images/sort.svg';
 import { Ul } from '../ul/ul';
-import { Link } from '../Link/link';
+import { Link } from '../link/link';
 import { FAQItem } from '../faq/faq-item';
 
 {/** 共通サイドバー */}
