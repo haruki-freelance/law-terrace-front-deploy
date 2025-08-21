@@ -1,10 +1,16 @@
 import lawTerraceIcon from '../../../assets/images/law-terrace-icon.svg';
 import account from '../../../assets/images/account.svg';
 import { StatusItem } from '../status-item/status-item';
-import hamburgerMenu from '../../../assets/images/hamburger-menu.svg';
+import { HamburgerMenuIconButton } from '../hamburger-menu-icon-button/hamburger-menu-icon-button';
+import { CloseWithLabelIcon } from '../hamburger-menu-icon-button/close-with-label-icon';
+import { HamburgerWithLabelIcon } from '../hamburger-menu-icon-button/hamburger-with-label-icon';
+import { useId, useState } from 'react';
 
  {/* 共通ヘッダー */}
 export function Header({ todo, inProgress, complete, fullName } : { todo: number, inProgress: number, complete: number, fullName: string }) {
+    const sampleJaId = useId();
+    const [isMenuJaOpen, setIsMenuJaOpen] = useState(false);
+
     return (
         <header className='flex items-center justify-between py-4.5 pr-2 pl-3 md:pr-4 md:pl-8'>
             {/* 法テラスロゴの表示 */}
@@ -25,10 +31,24 @@ export function Header({ todo, inProgress, complete, fullName } : { todo: number
                     src={account}
                     alt='プロフィール' />
             </div>
-            <img className='md:hidden block min-w-11 min-h-11 w-[8%] h-[8%]'
-                src={hamburgerMenu}
-                alt='メニュー'
-            />
+            <div className='relative md:hidden'>
+                <HamburgerMenuIconButton
+                className='hover:outline hover:outline-black'
+                aria-controls={`${sampleJaId}-menu`}
+                aria-expanded={isMenuJaOpen}
+                onClick={() => setIsMenuJaOpen(!isMenuJaOpen)}
+                >
+                {isMenuJaOpen ? <CloseWithLabelIcon /> : <HamburgerWithLabelIcon />}
+                </HamburgerMenuIconButton>
+                {isMenuJaOpen && (
+                <div
+                    className='absolute h-40 w-44 border border-solid-gray-420 p-4 bg-white right-0'
+                    id={`${sampleJaId}-menu`}
+                >
+                    サンプルメニュー
+                </div>
+                )}
+            </div>
         </header>
     );
 }
