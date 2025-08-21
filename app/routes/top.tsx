@@ -13,9 +13,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Top() {
   return (
-    <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4'>
+    <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4 h-full'>
       {/** 連絡一覧 */}
-      <section>
+      <section className='h-[50.73%]'>
         <header className='flex justify-between ml-2 md:ml-0'>
           <HeaderTitle title='連絡一覧' />
           <div className='flex flex-row gap-6'>
@@ -25,7 +25,7 @@ export default function Top() {
             <img src={sort} alt='ソート' className='block mr-1'/>
           </div>
         </header>
-        <div className='mt-4 max-h-166.5 overflow-y-auto md:max-h-108.75'>
+        <div className='mt-4 max-h-166.5 overflow-y-auto md:max-h-108.75 h-[90%]'>
           <ArticleItem title='12345678 宇津井 祐一' content='多重債務に関する詳細情報について、本人情報に訂正がありましたので再送します' 
                         updDatetime='25/11/12 14:32' category='民事法律扶助' isNew={true} isFlagOn={false} />
           <ArticleItem title='12345678 大久保 千秋' content='離婚相談の相談内容について、詳細情報をを更新しましたので内容確認をお願いします' 
@@ -49,7 +49,7 @@ export default function Top() {
         </div>
       </section>
       {/** 事件検索 */}
-      <section className='hidden md:block mt-16'>
+      <section className='hidden md:block mt-10 h-[32.75%]'>
         <header className='flex justify-between'>
           <HeaderTitle title='事件検索' />
           <div className='flex flex-row gap-4'>
@@ -60,7 +60,7 @@ export default function Top() {
             <img src={sort} alt='ソート' className='block mx-1'/>
           </div>
         </header>
-        <div className='mt-4 max-h-65.25 overflow-y-auto'>
+        <div className='mt-4 max-h-65.25 overflow-y-auto h-[82.86%]'>
           <ArticleItem title='XYZ-AAA 大久保 千秋' content='進行中　DV被害と離婚相談' 
                         updDatetime='25/11/12 14:32' category='国選弁護等関連' isNew={false} isFlagOn={false} />
           <ArticleItem title='XYZ-VCX  宇津井 祐一' content='完了　３件の債務整理' 
