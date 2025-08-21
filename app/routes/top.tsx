@@ -15,7 +15,7 @@ export default function Top() {
   return (
     <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4 h-full'>
       {/** 連絡一覧 */}
-      <section className='h-[50.73%]'>
+      <section className='md:h-[50.73%]'>
         <header className='flex justify-between ml-2 md:ml-0'>
           <HeaderTitle title='連絡一覧' />
           <div className='flex flex-row gap-6'>
@@ -25,7 +25,7 @@ export default function Top() {
             <img src={sort} alt='ソート' className='block mr-1'/>
           </div>
         </header>
-        <div className='mt-4 max-h-166.5 overflow-y-auto md:max-h-108.75 h-[90%]'>
+        <div className='mt-4 max-h-166.5 overflow-y-auto md:max-h-108.75 md:h-[90%]'>
           <ArticleItem title='12345678 宇津井 祐一' content='多重債務に関する詳細情報について、本人情報に訂正がありましたので再送します' 
                         updDatetime='25/11/12 14:32' category='民事法律扶助' isNew={true} isFlagOn={false} />
           <ArticleItem title='12345678 大久保 千秋' content='離婚相談の相談内容について、詳細情報をを更新しましたので内容確認をお願いします' 
