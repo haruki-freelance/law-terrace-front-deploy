@@ -13,10 +13,12 @@
   },
   "dependencies": {
     "@digital-go-jp/tailwind-theme-plugin": "^0.3.2",
+    "@internationalized/date": "^3.8.2",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
     "isbot": "^5.1.27",
     "react": "^19.1.0",
+    "react-aria-components": "^1.11.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.7.1"
   },

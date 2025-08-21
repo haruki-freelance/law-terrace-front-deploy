@@ -4,6 +4,7 @@ import { Label } from "~/shared/components/label/label";
 import { RequirementBadge } from "~/shared/components/requirement-badge/requirement-badge";
 import { CheckedMark } from "~/shared/components/checked-mark/checked-mark";
 import { Input } from "~/shared/components/input/input";
+import { CalendarInput } from "~/shared/components/calendar-input/calendar-input";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -30,31 +31,41 @@ export default function Detail({ params }: Route.LoaderArgs) {
                   <RequirementBadge>※</RequirementBadge>
                   <CheckedMark isChecked={true} />
                 </Label>
-                <Input name='name' blockSize='md' autoComplete='true' className='w-135 mt-3' />
+                <Input name='name' blockSize='md' autoComplete='true' className='w-135 mt-3' required />
                 {/* 事件番号 */}
                 <Label size='md' htmlFor='incidentNo' className='mt-6'>事件番号
                   <RequirementBadge>※</RequirementBadge>
                   <CheckedMark isChecked={true} />
                 </Label>
-                <Input name='incidentNo' blockSize='md' autoComplete='true' className='w-135 mt-3' />
+                <Input type='number' name='incidentNo' blockSize='md' autoComplete='true'
+                  className='w-60 mt-3 mx-0 mb-0
+                  [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none
+                  [&::-webkit-inner-spin-button]:appearance-none' required />
+                <span className='ml-2'>年</span>
+                <Input type='number' name='incidentNo' blockSize='md' autoComplete='true'
+                  className='w-60 mt-3 mr-0 mb-0 ml-4
+                  [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none
+                  [&::-webkit-inner-spin-button]:appearance-none' required />
+                <span className='ml-2'>号</span>
                 {/* 勾留日 TODO : カレンダー入力に修正 */}
                 <Label size='md' htmlFor='detentionDate' className='mt-6'>勾留日
                   <RequirementBadge>※</RequirementBadge>
                   <CheckedMark isChecked={false} />
                 </Label>
-                <Input name='detentionDate' blockSize='md' autoComplete='true' className='w-135 mt-3' />
+                <Input name='detentionDate' blockSize='md' autoComplete='true' className='w-135 mt-3' required />
+                <CalendarInput />
                 {/* 選任日 TODO : カレンダー入力に修正 */}
                 <Label size='md' htmlFor='electionDate' className='mt-6'>選任日
                   <RequirementBadge>※</RequirementBadge>
                   <CheckedMark isChecked={false} />
                 </Label>
-                <Input name='electionDate' blockSize='md' autoComplete='true' className='w-135 mt-3' />
+                <Input name='electionDate' blockSize='md' autoComplete='true' className='w-135 mt-3' required />
                 {/* 罪名 */}
                 <Label size='md' htmlFor='crimeName' className='mt-6'>罪名
                   <RequirementBadge>※</RequirementBadge>
                   <CheckedMark isChecked={false} />
                 </Label>
-                <Input name='crimeName' blockSize='md' autoComplete='true' className='w-135 mt-3' />
+                <Input name='crimeName' blockSize='md' autoComplete='true' className='w-135 mt-3' required />
               </form>
             </AccordionContent>
           </Accordion>
