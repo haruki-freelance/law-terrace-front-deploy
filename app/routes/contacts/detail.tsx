@@ -5,6 +5,8 @@ import { RequirementBadge } from "~/shared/components/requirement-badge/requirem
 import { CheckedMark } from "~/shared/components/checked-mark/checked-mark";
 import { Input } from "~/shared/components/input/input";
 import { CalendarInput } from "~/shared/components/calendar-input/calendar-input";
+import { useState } from "react";
+import { parseDate, type CalendarDate } from "@internationalized/date";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,6 +15,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Detail({ params }: Route.LoaderArgs) {
+  const [date, setDate] = useState<string>('test');
+  const [detentionDateShown, setDetentionDateShown] = useState<boolean>(false);
+
   return (
     <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4 h-full'>
       {/* <h1>Detail id : {params.id}</h1> */}
@@ -52,8 +57,11 @@ export default function Detail({ params }: Route.LoaderArgs) {
                   <RequirementBadge>※</RequirementBadge>
                   <CheckedMark isChecked={false} />
                 </Label>
-                <Input name='detentionDate' blockSize='md' autoComplete='true' className='w-135 mt-3' required />
-                <CalendarInput />
+                <div className='relative'>
+                  <Input name='detentionDate' blockSize='md' autoComplete='true' className='w-135 mt-3 text-right' value={date} 
+                    onClick={() => setDetentionDateShown(!detentionDateShown)} required readOnly />
+                  <CalendarInput className='absolute top-16 right-0' isShown={detentionDateShown} onChange={(val) => { setDate(val.toString()) }} />
+                </div>
                 {/* 選任日 TODO : カレンダー入力に修正 */}
                 <Label size='md' htmlFor='electionDate' className='mt-6'>選任日
                   <RequirementBadge>※</RequirementBadge>
