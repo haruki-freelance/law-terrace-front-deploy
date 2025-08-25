@@ -5,7 +5,9 @@ import { RequirementBadge } from "~/shared/components/requirement-badge/requirem
 import { CheckedMark } from "~/shared/components/checked-mark/checked-mark";
 import { Input } from "~/shared/components/input/input";
 import { CalendarInput } from "~/shared/components/calendar-input/calendar-input";
-import { useState } from "react";
+import React, { useState } from "react";
+import { FormStatus, InputStatus } from "~/shared/components/form-status/form-status";
+import { Breadcrumbs, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbsLabel } from "~/shared/components/breadcrumbs/breadcrumbs";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -19,7 +21,11 @@ export default function Detail({ params }: Route.LoaderArgs) {
   const [electionDate, setElectionDate] = useState<string>();
   const [detentionDateShown, setDetentionDateShown] = useState<boolean>(false);
   const [electionDateShown, setElectionDateShown] = useState<boolean>(false);
-
+  const [incidentNoYear, setIncidentNoYear] = useState<number>(0);
+  const breadcrumbsId = React.useId();
+  const contactId = params.id;
+  console.log(`contactId : ${contactId}`);
+  
   /** 全てのカレンダーポップアップ画面を閉じる */
   const closeAllCalendars = () => {
     setDetentionDateShown(false);
@@ -33,8 +39,9 @@ export default function Detail({ params }: Route.LoaderArgs) {
       </header>
       <section>
         <Accordion className='text-std-16N-170'>
+            {/* 被疑者情報 */}
             <AccordionSummary className='desktop:text-std-18N-160' id='accordion-example-summary-1'>
-              <h3>被疑者情報</h3>
+              <h3>被疑者情報<FormStatus status={InputStatus.InProgress} className='ml-6' /></h3>
             </AccordionSummary>
             <AccordionContent className='flex items-center justify-center'>
               <form>
@@ -52,7 +59,19 @@ export default function Detail({ params }: Route.LoaderArgs) {
                 <Input type='number' name='incidentNo' blockSize='md'
                   className='w-60 mt-3 mx-0 mb-0
                   [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none
-                  [&::-webkit-inner-spin-button]:appearance-none text-right' required />
+                  [&::-webkit-inner-spin-button]:appearance-none text-right' required
+                  value={incidentNoYear}
+                  onChange={e => {
+                    // 文字数制御
+                    const value = e.target.value;
+                    if (value.length > 4) {
+                      e.preventDefault();
+                      return;
+                    }
+                    if (!!value) {
+                      setIncidentNoYear(Number(value));
+                    }
+                  }} />
                 <span className='ml-2'>年</span>
                 <Input type='number' name='incidentNo' blockSize='md'
                   className='w-60 mt-3 mr-0 mb-0 ml-4
@@ -90,7 +109,66 @@ export default function Detail({ params }: Route.LoaderArgs) {
               </form>
             </AccordionContent>
           </Accordion>
+
+          {/* 処分結果詳細 */}
+          <Accordion className='text-std-16N-170'>
+            <AccordionSummary className='desktop:text-std-18N-160' id='accordion-example-summary-1'>
+              <h3>処分結果詳細<FormStatus status={InputStatus.Empty} className='ml-6' /></h3>
+            </AccordionSummary>
+            <AccordionContent className='flex items-center justify-center'></AccordionContent>
+          </Accordion>
+          {/* 接見日時等 */}
+          <Accordion className='text-std-16N-170'>
+            <AccordionSummary className='desktop:text-std-18N-160' id='accordion-example-summary-1'>
+              <h3>接見日時等<FormStatus status={InputStatus.Empty} className='ml-6' /></h3>
+            </AccordionSummary>
+            <AccordionContent className='flex items-center justify-center'></AccordionContent>
+          </Accordion>
+          {/* 手続期日等 */}
+          <Accordion className='text-std-16N-170'>
+            <AccordionSummary className='desktop:text-std-18N-160' id='accordion-example-summary-1'>
+              <h3>手続期日等<FormStatus status={InputStatus.Empty} className='ml-6' /></h3>
+            </AccordionSummary>
+            <AccordionContent className='flex items-center justify-center'></AccordionContent>
+          </Accordion>
+          {/* 身柄釈放 */}
+          <Accordion className='text-std-16N-170'>
+            <AccordionSummary className='desktop:text-std-18N-160' id='accordion-example-summary-1'>
+              <h3>身柄釈放<FormStatus status={InputStatus.Empty} className='ml-6' /></h3>
+            </AccordionSummary>
+            <AccordionContent className='flex items-center justify-center'></AccordionContent>
+          </Accordion>
       </section>
+      <footer className='mt-20'>
+        <Breadcrumbs aria-labelledby={`${breadcrumbsId}-label`}>
+          <BreadcrumbsLabel className='sr-only' id={`${breadcrumbsId}-label`}>
+            現在位置
+          </BreadcrumbsLabel>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink className='inline-flex items-center gap-1' href='/' key='home'>
+                <svg aria-hidden={true} fill='none' height='16' viewBox='0 0 16 16' width='16'>
+                  <g>
+                    <path
+                      d='M3 13.6666V6.16667L7.99998 2.40387L13 6.16667V13.6666H9.26922V9.2051H6.73075V13.6666H3Z'
+                      fill='currentColor'
+                    />
+                  </g>
+                </svg>
+                ホーム
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='#' key='contacts'>
+                連絡
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrent>
+              詳細
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumbs>
+      </footer>
       {/* オーバーレイ */}
       <div className={`fixed top-0 left-0 w-full h-full ${detentionDateShown || electionDateShown ? 'block' : 'hidden'}`}
         onClick={closeAllCalendars} />

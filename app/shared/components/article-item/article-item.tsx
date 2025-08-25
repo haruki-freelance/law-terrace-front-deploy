@@ -1,12 +1,23 @@
 import { Divider } from "../divider/divider";
 import flagOn from '~/assets/images/flag-on.svg';
 import flagOff from '~/assets/images/flag-off.svg';
+import type { ComponentProps } from "react";
+
+type ArticleItemProps = ComponentProps<'div'> & {
+    title: string;
+    content: string;
+    updDatetime: string;
+    category: string;
+    isNew: boolean;
+    isFlagOn: boolean;
+};
 
 {/** 記事一覧の項目 */}
-export function ArticleItem({ title, content, updDatetime, category, isNew, isFlagOn } : 
-        { title: string, content: string, updDatetime: string, category: string, isNew: boolean, isFlagOn: boolean }) {
+export function ArticleItem(props: ArticleItemProps) {
+    const { title, content, updDatetime, category, isNew, isFlagOn, ...rest } = props;
+
     return (
-        <>
+        <div {...rest}>
             <div className='flex flex-row bg-white w-full pt-5 pb-3.5'>
                 <div className='flex flex-col items-start justify-center w-[6%] md:w-[3%]'>
                     <span className={`${isNew === false ? 'hidden' : ''} ml-2 before:content-[""] before:block before:w-2 before:h-2 before:bg-[#FB5B01] before:rounded-full`}></span>
@@ -24,6 +35,6 @@ export function ArticleItem({ title, content, updDatetime, category, isNew, isFl
                 </div>
             </div>
             <Divider color="gray-420" />
-        </>
+        </div>
     );
 }
