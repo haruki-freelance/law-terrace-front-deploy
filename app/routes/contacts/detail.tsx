@@ -25,7 +25,7 @@ export default function Detail({ params }: Route.LoaderArgs) {
   const breadcrumbsId = React.useId();
   const contactId = params.id;
   console.log(`contactId : ${contactId}`);
-  
+
   /** 全てのカレンダーポップアップ画面を閉じる */
   const closeAllCalendars = () => {
     setDetentionDateShown(false);
@@ -158,13 +158,10 @@ export default function Detail({ params }: Route.LoaderArgs) {
                 ホーム
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href='#' key='contacts'>
-                連絡
-              </BreadcrumbLink>
-            </BreadcrumbItem>
             <BreadcrumbItem isCurrent>
-              詳細
+              <BreadcrumbLink href='#' key='contacts'>
+                宇津井 祐一 被疑者国選弁護報告
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumbs>
