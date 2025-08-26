@@ -5,3 +5,7 @@ html,
 body {
   @apply bg-white m-0 w-full h-full overflow-hidden;
 }
+
+body > section > main {
+  @apply flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4 h-full;
+}

@@ -16,7 +16,7 @@ export default function Top() {
   const navigate = useNavigate();
 
   return (
-    <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4 h-full'>
+    <main>
       {/** 連絡一覧 */}
       <section className='md:h-[50.73%]'>
         <header className='flex justify-between ml-2 md:ml-0'>

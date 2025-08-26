@@ -33,18 +33,18 @@ export default function Detail({ params }: Route.LoaderArgs) {
   };
 
   return (
-    <main className='flex flex-col w-full md:w-[73%] py-8 md:pl-8 md:pr-4 h-full'>
-      <header className='text-center'>
-        <h1 className='text-[32px] leading-[150%]'>被疑者国選弁護報告</h1>
+    <main>
+      <header className='text-center mb-4'>
+        <h1 className='text-[28px] md:text-[32px] leading-[150%]'>被疑者国選弁護報告</h1>
       </header>
-      <section>
+      <section className='max-h-[80%] overflow-y-auto'>
         <Accordion className='text-std-16N-170'>
             {/* 被疑者情報 */}
             <AccordionSummary className='desktop:text-std-18N-160' id='accordion-example-summary-1'>
               <h3>被疑者情報<FormStatus status={InputStatus.InProgress} className='ml-6' /></h3>
             </AccordionSummary>
             <AccordionContent className='flex items-center justify-center'>
-              <form>
+              <form className='max-w-[100%]'>
                 {/* 被疑者名 */}
                 <Label size='md' htmlFor='name'>被疑者名
                   <RequirementBadge>※</RequirementBadge>
@@ -72,9 +72,9 @@ export default function Detail({ params }: Route.LoaderArgs) {
                       setIncidentNoYear(Number(value));
                     }
                   }} />
-                <span className='ml-2'>年</span>
+                <span className='ml-2 mr-4'>年</span>
                 <Input type='number' name='incidentNo' blockSize='md'
-                  className='w-60 mt-3 mr-0 mb-0 ml-4
+                  className='w-60 mt-3 mr-0 mb-0
                   [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none
                   [&::-webkit-inner-spin-button]:appearance-none text-right' required />
                 <span className='ml-2'>号</span>
@@ -139,7 +139,7 @@ export default function Detail({ params }: Route.LoaderArgs) {
             <AccordionContent className='flex items-center justify-center'></AccordionContent>
           </Accordion>
       </section>
-      <footer className='mt-20'>
+      <footer className='absolute bottom-4'>
         <Breadcrumbs aria-labelledby={`${breadcrumbsId}-label`}>
           <BreadcrumbsLabel className='sr-only' id={`${breadcrumbsId}-label`}>
             現在位置
