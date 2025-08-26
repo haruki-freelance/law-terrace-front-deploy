@@ -5,6 +5,7 @@ import { HamburgerMenuIconButton } from '../hamburger-menu-icon-button/hamburger
 import { CloseWithLabelIcon } from '../hamburger-menu-icon-button/close-with-label-icon';
 import { HamburgerWithLabelIcon } from '../hamburger-menu-icon-button/hamburger-with-label-icon';
 import { useId, useState } from 'react';
+import { Link } from '../link/link';
 
  {/* 共通ヘッダー */}
 export function Header({ todo, inProgress, complete, fullName } : { todo: number, inProgress: number, complete: number, fullName: string }) {
@@ -42,13 +43,21 @@ export function Header({ todo, inProgress, complete, fullName } : { todo: number
                 </HamburgerMenuIconButton>
                 {isMenuJaOpen && (
                 <div
-                    className='absolute h-40 w-44 border border-solid-gray-420 p-4 bg-white right-0'
+                    className='absolute flex flex-col gap-4 min-h-40 w-44 border border-solid-gray-420 p-4 bg-white right-0 z-2'
                     id={`${sampleJaId}-menu`}
                 >
-                    サンプルメニュー
+                    <span>{fullName}</span>
+                    <Link href={'#'}>連絡一覧</Link>
+                    <Link href={'#'}>事件検索</Link>
+                    <Link href={'#'}>利用方法</Link>
+                    <Link href={'#'}>FAQ</Link>
+                    <Link href={'#'}>アカウント情報</Link>
                 </div>
                 )}
             </div>
+            {/* オーバーレイ */}
+            <div className={`fixed top-0 left-0 w-full h-full z-1 ${isMenuJaOpen ? 'block' : 'hidden'}`}
+                onClick={() => setIsMenuJaOpen(false)} />
         </header>
     );
 }
