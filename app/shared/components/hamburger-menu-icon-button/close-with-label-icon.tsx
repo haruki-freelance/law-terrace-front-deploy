@@ -11,7 +11,7 @@ export const CloseWithLabelIcon = (props: CloseWithLabelIconProps) => {
       {isEnglish ? (
         <svg
           aria-label={`${rest['aria-label'] ?? 'CLOSE'}`}
-          className={className}
+          className={`cursor-pointer ${className ?? ''}`}
           fill='none'
           height='44'
           role='img'
@@ -27,7 +27,7 @@ export const CloseWithLabelIcon = (props: CloseWithLabelIconProps) => {
       ) : (
         <svg
           aria-label={`${rest['aria-label'] ?? '閉じる'}`}
-          className={className}
+          className={`cursor-pointer ${className ?? ''}`}
           fill='none'
           height='44'
           role='img'

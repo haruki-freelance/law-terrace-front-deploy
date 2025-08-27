@@ -1,7 +1,8 @@
 import { Divider } from "../divider/divider";
 import flagOn from '~/assets/images/flag-on.svg';
 import flagOff from '~/assets/images/flag-off.svg';
-import type { ComponentProps } from "react";
+import type { ComponentProps, MouseEvent, MouseEventHandler } from "react";
+import { FlagMark } from "../flag-mark/flag-mark";
 
 type ArticleItemProps = ComponentProps<'div'> & {
     title: string;
@@ -10,15 +11,29 @@ type ArticleItemProps = ComponentProps<'div'> & {
     category: string;
     isNew: boolean;
     isFlagOn: boolean;
+    onFlagClick: (v: boolean) => void;
 };
 
 {/** 記事一覧の項目 */}
 export function ArticleItem(props: ArticleItemProps) {
-    const { title, content, updDatetime, category, isNew, isFlagOn, ...rest } = props;
+    const { title, content, updDatetime, category, isNew, isFlagOn, onFlagClick, onClick, ...rest } = props;
+    const onItemClick = (event: MouseEvent<HTMLDivElement> | undefined) => {
+        if (!!event) {
+            const targetEl = event.target as HTMLElement;
+            if (targetEl.classList.contains('flag')) {
+                event.preventDefault();
+                return;
+            }
+
+            if (!!onClick) {
+                onClick(event);
+            }
+        }
+    };
 
     return (
-        <div {...rest}>
-            <div className='flex flex-row bg-white w-full pt-5 pb-3.5'>
+        <div onClick={onItemClick} {...rest}>
+            <div className='flex flex-row bg-white w-full pt-5 pb-3.5 hover:bg-solid-gray-50 cursor-pointer'>
                 <div className='flex flex-col items-start justify-center w-[6%] md:w-[3%]'>
                     <span className={`${isNew === false ? 'hidden' : ''} ml-2 before:content-[""] before:block before:w-2 before:h-2 before:bg-[#FB5B01] before:rounded-full`}></span>
                 </div>
@@ -31,7 +46,7 @@ export function ArticleItem(props: ArticleItemProps) {
                     <span className='text-base'>{category}</span>
                 </div>
                 <div className='flex flex-col w-[6%] items-end justify-center'>
-                    <img src={isFlagOn ? flagOn : flagOff} alt='フラグオフ' className='mr-1'/>
+                    <FlagMark className='flag mr-1' isFlagOn={isFlagOn} onFlagClick={onFlagClick} />
                 </div>
             </div>
             <Divider color="gray-420" />

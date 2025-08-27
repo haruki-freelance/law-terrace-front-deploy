@@ -31,7 +31,7 @@ export const AccordionSummary = (props: AccordionSummaryProps) => {
         marker:[content:'']
         hover:bg-solid-gray-50 focus-visible:rounded-4 focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-[calc(2/16*1rem)] focus-visible:outline-black focus-visible:ring-[calc(2/16*1rem)] focus-visible:ring-yellow-300
         desktop:py-3.5 desktop:pl-[calc(var(--icon-size)+(20/16*1rem))] desktop:pr-4
-        [&::-webkit-details-marker]:hidden ${className ?? ''}
+        [&::-webkit-details-marker]:hidden cursor-pointer ${className ?? ''}
       `}
       {...rest}
     >

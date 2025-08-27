@@ -11,7 +11,7 @@ export const HamburgerWithLabelIcon = (props: HamburgerWithLabelIconProps) => {
       {isEnglish ? (
         <svg
           aria-label={`${rest['aria-label'] ?? 'MENU'}`}
-          className={className}
+          className={`cursor-pointer ${className ?? ''}`}
           fill='none'
           height='44'
           role='img'
@@ -27,7 +27,7 @@ export const HamburgerWithLabelIcon = (props: HamburgerWithLabelIconProps) => {
       ) : (
         <svg
           aria-label={`${rest['aria-label'] ?? 'メニュー'}`}
-          className={className}
+          className={`cursor-pointer ${className ?? ''}`}
           fill='none'
           height='44'
           role='img'
